@@ -1,11 +1,10 @@
 body {
   margin: 0;
   font-family: Nunito, sans-serif;
-  background: #e082ca;
-  background: linear-gradient(
+  background-image: linear-gradient(
     0deg,
-    rgba(224, 130, 202, 1) 0%,
-    rgba(237, 204, 255, 1) 100%
+    rgb(188, 188, 188) 0%,
+    rgb(255, 255, 255) 100%
   );
   color: #333;
   display: flex;
@@ -14,7 +13,31 @@ body {
   flex-direction: column;
   margin: 2rem 1rem 0rem 1rem;
   min-height: 100vh;
+  position: relative;
 }
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at center, #6d4f1e 0%, #0a0a0a 100%);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body.lit::before {
+  opacity: 1;
+}
+
+body.lit .app-container h1 {
+  color: #ffaa66;
+}
+
 
 nav {
   background-color: rgba(255, 211, 211, 0.2);
@@ -30,6 +53,32 @@ nav {
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
 }
 
+.logo-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.logo-container img {
+  display: block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.logo-dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+body.lit .logo-dark {
+  opacity: 1;
+}
+
+body.lit .logo-light {
+  opacity: 0;
+}
+
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -42,6 +91,11 @@ nav ul li a {
   text-decoration: none;
   color: #333;
   font-size: 1.35rem;
+  transition: color 0.5s ease-in-out;
+}
+
+body.lit nav ul li a {
+  color: #ecd6c4;
 }
 
 nav ul li {
@@ -152,6 +206,11 @@ footer p {
   margin: 0;
   font-size: 1rem;
   color: #555;
+  transition: color 0.5s ease-in-out;
+}
+
+body.lit footer p {
+  color: #ddd;
 }
 
 footer a {
@@ -159,6 +218,10 @@ footer a {
   color: #333;
   font-size: 1.35rem;
   transition: all 0.3s ease-in-out;
+}
+
+body.lit footer a {
+  color: #ecd6c4;
 }
 
 footer li:hover {
@@ -177,10 +240,10 @@ footer ul {
   0%, 100% {
     transform: translateY(0);
   }
-  8.3% {  
+  8.3% {
     transform: translateY(-10px);
   }
-  16.6% {    
+  16.6% {
     transform: translateY(0);
   }
 
@@ -199,6 +262,7 @@ footer ul {
 .app-container h1 {
   margin-bottom: 0rem;
   font-size: 3rem;
+  transition: color 0.5s ease-in-out;
 }
 
 .app-container p {
@@ -206,6 +270,11 @@ footer ul {
   margin-bottom: 0;
   color: #555;
   font-size: 1.25rem;
+  transition: color 0.5s ease-in-out;
+}
+
+body.lit .app-container p {
+  color: #ddd;
 }
 
 .app-circle {
@@ -265,6 +334,63 @@ footer ul {
   background-color: #e6739b;
   transform: scale(1.05);
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+
+.modal-settings {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+
+
+/* Candle styles */
+.candle {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.flame {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.flame.lit {
+  opacity: 1;
+  animation: flicker 2s ease-in-out infinite;
+}
+
+
+@keyframes flicker {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  25% {
+    transform: scale(1.05, 0.95) translateY(-1px);
+  }
+  50% {
+    transform: scale(0.98, 1.03) translateY(1px);
+  }
+  75% {
+    transform: scale(1.02, 0.98) translateY(-0.5px);
+  }
+}
+
 
 /* Responsive Design */
 

@@ -1,9 +1,15 @@
-
-//bunch of variables for DOM elements
+//bunch of variables for timer
+const settingsBtn = document.querySelector(".btn-settings");
 const startBtn = document.querySelector(".btn-start");
 const resetBtn = document.querySelector(".btn-reset");
 const timeMinutes = document.querySelector(".minutes");
 const timeSeconds = document.querySelector(".seconds");
+//timer settings modal variables
+const modalSettings = document.querySelector(".modal-settings");
+const closeButton = document.querySelector(".close-button");
+const saveSettingsButton = document.querySelector(".save-settings");
+const workDurationInput = document.querySelector("#work-duration");
+const breakDurationInput = document.querySelector("#break-duration");
 //variables for circle progress bar
 const circle = document.querySelector(".progress-ring__circle");
 const radius = circle.r.baseVal.value;
@@ -27,6 +33,16 @@ function setProgress(percent) {
   circle.style.strokeDashoffset = offset;
 }
 
+function styleChange() {
+  if (!state) {
+    document.body.classList.add("lit");
+    document.querySelector(".flame").classList.add("lit");
+  } else if (state) {
+    document.body.classList.remove("lit");
+    document.querySelector(".flame").classList.remove("lit");
+  }
+}
+
 //main timer function
 function appTimer() {
   //check to see if timer is paused or freshly started and set session length accordingly
@@ -43,6 +59,7 @@ function appTimer() {
   isPaused = false;
 
   if (!state) {
+    styleChange();
     state = true;
     startBtn.textContent = "Pause";
     //timer loop function
@@ -70,7 +87,6 @@ function appTimer() {
         timeSeconds.textContent = initialTimeSeconds;
         setProgress(0);
       }
-      console.log(totalTime);
     };
     myInterval = setInterval(updateTimer, 1000);
   } else {
@@ -84,15 +100,16 @@ function appTimer() {
 }
 //reset button function
 function resetTimer() {
-    clearInterval(myInterval);
-    state = false;
-    isPaused = false;
-    remainingTime = 0;
-    totalTime = 0;
-    setProgress(0);
-    timeMinutes.textContent = initialTimeMinutes;
-    timeSeconds.textContent = initialTimeSeconds;
-    startBtn.textContent = "Start";
+  styleChange();
+  clearInterval(myInterval);
+  state = false;
+  isPaused = false;
+  remainingTime = 0;
+  totalTime = 0;
+  setProgress(0);
+  timeMinutes.textContent = initialTimeMinutes;
+  timeSeconds.textContent = initialTimeSeconds;
+  startBtn.textContent = "Start";
 }
 //i think this is self explanatory
 startBtn.addEventListener("click", appTimer);
