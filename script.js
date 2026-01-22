@@ -18,6 +18,7 @@ const radius = circle.r.baseVal.value;
 const circumference = 2 * Math.PI * radius;
 //timer state variables
 let isPaused = false;
+let workMode = true;
 let remainingTime = 0;
 let totalTime = 0;
 let myInterval;
@@ -38,8 +39,9 @@ function setProgress(percent) {
   circle.style.strokeDashoffset = offset;
 }
 
+//change style from idle to running timer.
 function styleChange() {
-  if (!state && !isPaused) {
+  if (state && !isPaused) {
     document.body.classList.add("lit");
     document.querySelector(".flame").classList.add("lit");
   } else {
@@ -99,11 +101,15 @@ function appTimer() {
     totalTime = sessionLength;
   }
 
+  if (!isPaused) {
+    isWorkMode = true;
+  }
+
   isPaused = false;
 
   if (!state) {
-    styleChange();
     state = true;
+    styleChange();
     startBtn.textContent = "Pause";
     //timer loop function
     const updateTimer = () => {
@@ -124,13 +130,21 @@ function appTimer() {
 
       //timer end condition
       if (minutesLeft === 0 && secondsLeft === 0) {
-        clearInterval(myInterval);
-        state = false;
-        startBtn.textContent = "Start";
-        timeHours.textContent = initialTimeHours;
-        timeMinutes.textContent = initialTimeMinutes;
-        timeSeconds.textContent = initialTimeSeconds;
-        setProgress(0);
+        if (workMode) {
+          workMode = false;
+          sessionLength = breakDuration * 60;
+          totalTime = sessionLength;
+        } else {
+          clearInterval(myInterval);
+          workMode = true;
+          state = false;
+          startBtn.textContent = "Start";
+          timeHours.textContent = initialTimeHours;
+          timeMinutes.textContent = initialTimeMinutes;
+          timeSeconds.textContent = initialTimeSeconds;
+          styleChange();
+          setProgress(0);
+        }
       }
     };
     myInterval = setInterval(updateTimer, 1000);
@@ -146,12 +160,13 @@ function appTimer() {
 //reset button function
 function resetTimer() {
   if (state || isPaused) {
-    styleChange();
     clearInterval(myInterval);
     state = false;
     isPaused = false;
+    workMode = true;
     remainingTime = 0;
     totalTime = 0;
+    styleChange();
     setProgress(0);
     timeHours.textContent = initialTimeHours;
     timeMinutes.textContent = initialTimeMinutes;
@@ -159,7 +174,7 @@ function resetTimer() {
     startBtn.textContent = "Start";
   }
 }
-//i think this is self explanatory
+//i think this is self explanatory, calls functions for whatever element is clicked
 startBtn.addEventListener("click", appTimer);
 resetBtn.addEventListener("click", resetTimer);
 settingsBtn.addEventListener("click", openSettings);
