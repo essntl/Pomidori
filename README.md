@@ -21,3 +21,7 @@ There are so many ideas I want to implement here. As you might've noticed if you
 # What I learned
 
 As obvious as it is, you need to plan better and split things into smaller problems. Prior to doing the course I couldn't really wrap my head around code at all but I understood that it's just a lot of small logical operations that combine into something massive over time. Even if you think down to how machines work, it's all a bunch of true/false switches so of course coding will be similar to that.
+
+# Feedback
+
+I would really appreciate feedback on the optimization of my code, could I have done things more efficiently (probably), if so how? Is my structure good, okay, bad? What could I change? Feedback about the design, and anything in general would be very appreciated.
