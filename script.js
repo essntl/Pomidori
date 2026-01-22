@@ -5,6 +5,7 @@ const resetBtn = document.querySelector(".btn-reset");
 const timeHours = document.querySelector(".hours");
 const timeMinutes = document.querySelector(".minutes");
 const timeSeconds = document.querySelector(".seconds");
+const statusIndicator = document.querySelector(".timer-status")
 //timer settings modal variables
 const modalOverlay = document.querySelector(".modal-overlay");
 const modalSettings = document.querySelector(".modal-settings");
@@ -19,8 +20,8 @@ const circumference = 2 * Math.PI * radius;
 //timer state variables
 let isPaused = false;
 let workMode = true;
-let remainingTime = 0;
 let totalTime = 0;
+let sessionLength = 0;
 let myInterval;
 let state = false;
 let initialTimeHours = timeHours.textContent;
@@ -38,6 +39,19 @@ function setProgress(percent) {
   const offset = circumference - (percent / 100) * circumference;
   circle.style.strokeDashoffset = offset;
 }
+
+function timerStatus() {
+  if(!state && !isPaused) {
+    statusIndicator.textContent = "Idle"
+  } else if (state) {
+    statusIndicator.textContent = "Working"
+  } else if (isPaused) {
+    statusIndicator.textContent = "Paused"
+  }
+}
+
+
+
 
 //change style from idle to running timer.
 function styleChange() {
@@ -94,8 +108,10 @@ function saveSettings() {
 //main timer function
 function appTimer() {
   //check to see if timer is paused or freshly started and set session length accordingly
-  let sessionLength = isPaused ? remainingTime : workDuration * 60;
-
+  if (sessionLength === 0) {
+    sessionLength = workDuration * 60;
+  }
+  
   //set total time for progress calculation
   if (totalTime === 0) {
     totalTime = sessionLength;
@@ -104,17 +120,16 @@ function appTimer() {
   if (!isPaused) {
     isWorkMode = true;
   }
-
   isPaused = false;
-
+  //start the countdown loop
   if (!state) {
     state = true;
     styleChange();
+    timerStatus();
     startBtn.textContent = "Pause";
     //timer loop function
     const updateTimer = () => {
       sessionLength--;
-
       let hoursLeft = Math.floor(sessionLength / 3600);
       let minutesLeft = Math.floor((sessionLength % 3600) / 60);
       let secondsLeft = sessionLength % 60;
@@ -148,13 +163,12 @@ function appTimer() {
       }
     };
     myInterval = setInterval(updateTimer, 1000);
-  } else {
-    //state when timer is paused. Sets button text and saves remaining time
+  } else {   //state when timer is paused. Sets button text and sets the pause state
     state = false;
     isPaused = true;
-    remainingTime = sessionLength;
     clearInterval(myInterval);
     startBtn.textContent = "Resume";
+    timerStatus();
   }
 }
 //reset button function
@@ -164,14 +178,15 @@ function resetTimer() {
     state = false;
     isPaused = false;
     workMode = true;
-    remainingTime = 0;
     totalTime = 0;
+    sessionLength = 0;
     styleChange();
     setProgress(0);
     timeHours.textContent = initialTimeHours;
     timeMinutes.textContent = initialTimeMinutes;
     timeSeconds.textContent = initialTimeSeconds;
     startBtn.textContent = "Start";
+    timerStatus();
   }
 }
 //i think this is self explanatory, calls functions for whatever element is clicked
