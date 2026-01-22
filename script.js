@@ -34,10 +34,10 @@ function setProgress(percent) {
 }
 
 function styleChange() {
-  if (!state) {
+  if (!state && !isPaused) {
     document.body.classList.add("lit");
     document.querySelector(".flame").classList.add("lit");
-  } else if (state) {
+  } else {
     document.body.classList.remove("lit");
     document.querySelector(".flame").classList.remove("lit");
   }
@@ -100,16 +100,18 @@ function appTimer() {
 }
 //reset button function
 function resetTimer() {
-  styleChange();
-  clearInterval(myInterval);
-  state = false;
-  isPaused = false;
-  remainingTime = 0;
-  totalTime = 0;
-  setProgress(0);
-  timeMinutes.textContent = initialTimeMinutes;
-  timeSeconds.textContent = initialTimeSeconds;
-  startBtn.textContent = "Start";
+  if (state || isPaused) {
+    styleChange();
+    clearInterval(myInterval);
+    state = false;
+    isPaused = false;
+    remainingTime = 0;
+    totalTime = 0;
+    setProgress(0);
+    timeMinutes.textContent = initialTimeMinutes;
+    timeSeconds.textContent = initialTimeSeconds;
+    startBtn.textContent = "Start";
+  }
 }
 //i think this is self explanatory
 startBtn.addEventListener("click", appTimer);
