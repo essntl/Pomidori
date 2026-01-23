@@ -6,7 +6,7 @@ const timeHours = document.querySelector(".hours");
 const timeMinutes = document.querySelector(".minutes");
 const timeSeconds = document.querySelector(".seconds");
 const statusIndicator = document.querySelector(".timer-status");
-const cycleIndicator = document.querySelector(".cycle-count")
+const cycleIndicator = document.querySelector(".cycle-count");
 //timer settings modal variables
 const modalOverlay = document.querySelector(".modal-overlay");
 const modalSettings = document.querySelector(".modal-settings");
@@ -34,6 +34,9 @@ let workDuration = 25;
 let breakDuration = 5;
 let currentCycle = 1;
 let totalCycles = 2;
+// audio effects for timer interactions
+const startSound = new Audio("media/start.mp3");
+const resetSound = new Audio("media/reset.mp3");
 
 // Set initial stroke dasharray and dashoffset for the progress circle
 circle.style.strokeDasharray = `${circumference} ${circumference}`;
@@ -117,6 +120,7 @@ function appTimer() {
   //check to see if timer is paused or freshly started and set session length accordingly
   if (sessionLength === 0) {
     sessionLength = workDuration * 60;
+    startSound.play();
   }
 
   //set total time for progress calculation
@@ -158,15 +162,16 @@ function appTimer() {
             breakMode = true;
             sessionLength = breakDuration * 60;
             totalTime = sessionLength;
-            timerStatus()
+            timerStatus();
             currentCycle++;
           } else {
-            cycleIndicator.textContent = "Cycle " + currentCycle + "/" + totalCycles;
+            cycleIndicator.textContent =
+              "Cycle " + currentCycle + "/" + totalCycles;
             workMode = true;
             breakMode = false;
             sessionLength = workDuration * 60;
             totalTime = sessionLength;
-            timerStatus()
+            timerStatus();
           }
         } else {
           clearInterval(myInterval);
@@ -197,6 +202,7 @@ function appTimer() {
 //reset button function
 function resetTimer() {
   if (state || isPaused) {
+    resetSound.play();
     clearInterval(myInterval);
     state = false;
     isPaused = false;
