@@ -6,10 +6,15 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
   <body>
+    <script>
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+    </script>
     <nav>
       <div class="logo-container" onclick="window.location.href = 'index.html'">
         <img
@@ -25,10 +30,18 @@
           width="250px"
         />
       </div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="app.html">App</a></li>
-      </ul>
+      <div class="link-div">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="app.html">App</a></li>
+        </ul>
+        <div class="dark-toggle-div">
+          <label>
+            <input name="darkModeToggle" type="checkbox" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
     </nav>
     <div class="app-container">
       <h1>Pomodoro</h1>
@@ -122,7 +135,7 @@
             text-anchor="middle"
             dominant-baseline="middle"
           >
-          <tspan>Idle</tspan>
+            <tspan>Idle</tspan>
           </text>
         </svg>
       </div>
@@ -179,6 +192,7 @@
         <button class="save-settings">Save Settings</button>
       </div>
     </div>
+    <script src="darkmode.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

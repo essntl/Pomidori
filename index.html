@@ -9,13 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <nav>
-      <img
-        src="src/logofull.png"
-        alt="logo"
-        width="250px"
-        onclick="window.location.href = 'index.html'"
-      />
+    <script>
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+      }
+    </script>
+     <nav>
+      <div class="logo-container" onclick="window.location.href = 'index.html'">
+        <img
+          class="logo-light"
+          src="src/logofull.png"
+          alt="logo"
+          width="250px"
+        />
+        <img
+          class="logo-dark"
+          src="src/darklogofull.png"
+          alt="logo"
+          width="250px"
+        />
+      </div>
       <div class="link-div">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -23,7 +36,7 @@
         </ul>
         <div class="dark-toggle-div">
           <label>
-            <input type="checkbox" />
+            <input name="darkModeToggle" type="checkbox" />
             <span class="slider"></span>
           </label>
         </div>
@@ -100,7 +113,20 @@
     </about>
     <footer>
       <div>
-        <img src="src/logofull.png" alt="logo" width="200px" />
+        <div class="logo-container">
+          <img
+            class="logo-light"
+            src="src/logofull.png"
+            alt="logo"
+            width="200px"
+          />
+          <img
+            class="logo-dark"
+            src="src/darklogofull.png"
+            alt="logo"
+            width="200px"
+          />
+        </div>
         <p>The ultimate productivity tool</p>
       </div>
       <div>
@@ -110,5 +136,6 @@
         </ul>
       </div>
     </footer>
+    <script src="darkmode.js"></script>
   </body>
 </html>
