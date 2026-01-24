@@ -6,7 +6,7 @@ const timeHours = document.querySelector(".hours");
 const timeMinutes = document.querySelector(".minutes");
 const timeSeconds = document.querySelector(".seconds");
 const statusIndicator = document.querySelector(".timer-status");
-const cycleIndicator = document.querySelector(".cycle-count");
+const loopIndicator = document.querySelector(".loop-count");
 //timer settings modal variables
 const modalOverlay = document.querySelector(".modal-overlay");
 const modalSettings = document.querySelector(".modal-settings");
@@ -14,7 +14,7 @@ const closeButton = document.querySelector(".close-button");
 const saveSettingsButton = document.querySelector(".save-settings");
 const workDurationInput = document.querySelector("#work-duration");
 const breakDurationInput = document.querySelector("#break-duration");
-const cycleCountInput = document.querySelector("#cycle-count");
+const loopCountInput = document.querySelector("#loop-count");
 //variables for circle progress bar
 const circle = document.querySelector(".progress-ring__circle");
 const radius = circle.r.baseVal.value;
@@ -32,11 +32,12 @@ let initialTimeMinutes = timeMinutes.textContent;
 let initialTimeSeconds = timeSeconds.textContent;
 let workDuration = 25;
 let breakDuration = 5;
-let currentCycle = 1;
-let totalCycles = 2;
+let currentLoop = 1;
+let totalLoops = 2;
 // audio effects for timer interactions
 const startSound = new Audio("media/start.mp3");
 const resetSound = new Audio("media/reset.mp3");
+const timerSound = new Audio("media/timer.mp3");
 
 // Set initial stroke dasharray and dashoffset for the progress circle
 circle.style.strokeDasharray = `${circumference} ${circumference}`;
@@ -57,6 +58,7 @@ function timerStatus() {
     statusIndicator.textContent = "Paused";
   } else if (breakMode) {
     statusIndicator.textContent = "Break";
+    timerSound.play();
   }
 }
 
@@ -76,38 +78,34 @@ function openSettings() {
     resetTimer();
   }
   modalOverlay.style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
 function closeSettings() {
   modalOverlay.style.display = "none";
+  document.body.style.overflow = "";
 }
 
 function saveSettings() {
-  workDuration = Number.parseInt(workDurationInput.value);
-  breakDuration = Number.parseInt(breakDurationInput.value);
-  totalCycles = Number.parseInt(cycleCountInput.value);
-  currentCycle = 1;
-  if (
-    isNaN(workDuration) ||
-    workDuration <= 0 ||
-    workDuration > 360 ||
-    isNaN(breakDuration) ||
-    breakDuration <= 0 ||
-    breakDuration > 360
-  ) {
-    alert(
-      "Please enter valid work and break durations between 1 and 360 minutes",
-    );
+  const work = Number(workDurationInput.value);
+  const breakDur = Number(breakDurationInput.value);
+  const loops = Number(loopCountInput.value);
+  
+  if (work < 1 || work > 360 || breakDur < 1 || breakDur > 360) {
+    alert("Please enter valid work (max 360 min) and break (max 60 min) durations along with a loop count between 1-15.");
     return;
   }
-
+  workDuration = Number.parseInt(workDurationInput.value);
+  breakDuration = Number.parseInt(breakDurationInput.value);
+  totalLoops = Number.parseInt(loopCountInput.value);
+  currentLoop = 1;
   let hours = Math.floor(workDuration / 60);
   let minutes = workDuration % 60;
 
   timeHours.textContent = hours < 10 ? "0" + hours : hours;
   timeMinutes.textContent = minutes < 10 ? "0" + minutes : minutes;
   timeSeconds.textContent = "00";
-  cycleIndicator.textContent = "Cycle " + currentCycle + "/" + totalCycles;
+  loopIndicator.textContent = "Loop " + currentLoop + "/" + totalLoops;
   initialTimeHours = timeHours.textContent;
   initialTimeMinutes = timeMinutes.textContent;
   initialTimeSeconds = timeSeconds.textContent;
@@ -156,17 +154,17 @@ function appTimer() {
 
       //timer end condition
       if (minutesLeft === 0 && secondsLeft === 0) {
-        if (currentCycle <= totalCycles) {
+        if (currentLoop <= totalLoops) {
           if (workMode) {
             workMode = false;
             breakMode = true;
             sessionLength = breakDuration * 60;
             totalTime = sessionLength;
             timerStatus();
-            currentCycle++;
+            currentLoop++;
           } else {
-            cycleIndicator.textContent =
-              "Cycle " + currentCycle + "/" + totalCycles;
+            loopIndicator.textContent =
+              "Loop " + currentLoop + "/" + totalLoops;
             workMode = true;
             breakMode = false;
             sessionLength = workDuration * 60;
@@ -181,8 +179,8 @@ function appTimer() {
           timeHours.textContent = initialTimeHours;
           timeMinutes.textContent = initialTimeMinutes;
           timeSeconds.textContent = initialTimeSeconds;
-          currentCycle = 1;
-          cycleIndicator.textContent = "Cycle 1/" + totalCycles;
+          currentLoop = 1;
+          loopIndicator.textContent = "Loop 1/" + totalLoops;
           styleChange();
           setProgress(0);
         }
@@ -207,9 +205,10 @@ function resetTimer() {
     state = false;
     isPaused = false;
     workMode = true;
+    breakMode = false;
     totalTime = 0;
     sessionLength = 0;
-    currentCycle = 1;
+    currentLoop = 1;
     styleChange();
     setProgress(0);
     timeHours.textContent = initialTimeHours;

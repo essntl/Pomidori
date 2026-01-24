@@ -1,6 +1,8 @@
 <html>
   <head>
     <title>Pomidori</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap"
@@ -43,105 +45,114 @@
         </div>
       </div>
     </nav>
-    <div class="app-container">
-      <h1>Pomodoro</h1>
-      <p>Press start to begin</p>
-      <div class="app-circle">
-        <svg class="progress-ring" viewBox="0 0 400 400">
-          <circle
-            class="progress-ring__circle"
-            stroke="rgb(251, 195, 24)"
-            stroke-width="8"
-            fill="rgb(255, 255, 255, 0.7)"
-            r="190"
-            cx="200"
-            cy="200"
-          />
-
-          <!-- Candle -->
-          <g class="candle" transform="translate(200, 280)">
-            <!-- Candle body -->
-            <rect
-              x="-15"
-              y="-150"
-              width="30"
-              height="60"
-              fill="#f8e5d5"
-              rx="3"
-            />
-            <!-- Candle shadow/dimension -->
-            <rect
-              x="-12"
-              y="-150"
-              width="24"
-              height="60"
-              fill="#ffe8d6"
-              rx="2"
-            />
-            <!-- Wick -->
-            <rect x="-1.5" y="-155" width="3" height="8" fill="#2c2c2c" />
-
-            <!-- Flame -->
-            <g class="flame">
-              <!-- Outer flame -->
-              <ellipse
-                cx="0"
-                cy="-160"
-                rx="8"
-                ry="12"
-                fill="#ff6b35"
-                opacity="0.8"
-              />
-              <!-- Middle flame -->
-              <ellipse
-                cx="0"
-                cy="-160"
-                rx="5"
-                ry="9"
-                fill="#ffaa00"
-                opacity="0.9"
-              />
-              <!-- Inner flame -->
-              <ellipse cx="0" cy="-160" rx="3" ry="6" fill="#fff4a3" />
-              <!-- Flame glow -->
-              <ellipse
-                cx="0"
-                cy="-160"
-                rx="12"
-                ry="16"
-                fill="#ff6b35"
-                opacity="0.2"
-              />
-            </g>
-          </g>
-
-          <text
-            x="200"
-            y="240"
-            class="timer-text"
-            text-anchor="middle"
-            dominant-baseline="middle"
-          >
-            <tspan class="hours">00</tspan>
-            :
-            <tspan class="minutes">25</tspan>
-            :
-            <tspan class="seconds">00</tspan>
-          </text>
-          <text x="200" y="280" text-anchor="middle" dominant-baseline="middle">
-            <tspan class="timer-status">Idle</tspan>
-            -
-            <tspan class="cycle-count">Cycle 1/2</tspan>
-          </text>
-        </svg>
+    <div class="main-container">
+      <div class="ambient-container">
+        <h1>Ambient</h1>
       </div>
-      <div class="btn-div">
-        <a class="btn-reset">Reset</a>
-        <a class="btn-start">Start</a>
-        <a class="btn-settings">Settings</a>
+      <div class="timer-container">
+        <h1>Pomodoro</h1>
+        <p>Press start to begin</p>
+        <div class="timer-circle">
+          <svg class="progress-ring" viewBox="0 0 400 400">
+            <circle
+              class="progress-ring__circle"
+              stroke="rgb(251, 195, 24)"
+              stroke-width="8"
+              fill="rgb(255, 255, 255, 0.7)"
+              r="180"
+              cx="200"
+              cy="200"
+            />
+
+            <!-- Candle -->
+            <g class="candle" transform="translate(200, 280)">
+              <!-- Candle body -->
+              <rect
+                x="-15"
+                y="-150"
+                width="30"
+                height="60"
+                fill="#f8e5d5"
+                rx="3"
+              />
+              <!-- Candle shadow/dimension -->
+              <rect
+                x="-12"
+                y="-150"
+                width="24"
+                height="60"
+                fill="#ffe8d6"
+                rx="2"
+              />
+              <!-- Wick -->
+              <rect x="-1.5" y="-155" width="3" height="8" fill="#2c2c2c" />
+
+              <!-- Flame -->
+              <g class="flame">
+                <!-- Outer flame -->
+                <ellipse
+                  cx="0"
+                  cy="-160"
+                  rx="8"
+                  ry="12"
+                  fill="#ff6b35"
+                  opacity="0.8"
+                />
+                <!-- Middle flame -->
+                <ellipse
+                  cx="0"
+                  cy="-160"
+                  rx="5"
+                  ry="9"
+                  fill="#ffaa00"
+                  opacity="0.9"
+                />
+                <!-- Inner flame -->
+                <ellipse cx="0" cy="-160" rx="3" ry="6" fill="#fff4a3" />
+                <!-- Flame glow -->
+                <ellipse
+                  cx="0"
+                  cy="-160"
+                  rx="12"
+                  ry="16"
+                  fill="#ff6b35"
+                  opacity="0.2"
+                />
+              </g>
+            </g>
+
+            <text
+              x="200"
+              y="240"
+              class="timer-text"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              <tspan class="hours">00</tspan>
+              :
+              <tspan class="minutes">25</tspan>
+              :
+              <tspan class="seconds">00</tspan>
+            </text>
+            <text
+              x="200"
+              y="280"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              <tspan class="timer-status">Idle</tspan>
+              -
+              <tspan class="loop-count">Loop 1/2</tspan>
+            </text>
+          </svg>
+        </div>
+        <div class="btn-div">
+          <a class="btn-reset">Reset</a>
+          <a class="btn-start">Start</a>
+          <a class="btn-settings">Settings</a>
+        </div>
       </div>
     </div>
-
     <footer>
       <div>
         <div class="logo-container">
@@ -177,7 +188,7 @@
             type="number"
             id="work-duration"
             min="1"
-            max="120"
+            max="360"
             value="25"
           />
         </div>
@@ -186,8 +197,8 @@
           <input type="number" id="break-duration" min="1" max="60" value="5" />
         </div>
         <div class="settings-option">
-          <label for="cycle-count">Cycle count (Work + Break):</label>
-          <input type="number" id="cycle-count" min="1" max="15" value="2" />
+          <label for="loop-count">Loops (Work + Break):</label>
+          <input type="number" id="loop-count" min="1" max="15" value="2" />
         </div>
         <button class="save-settings">Save Settings</button>
       </div>
