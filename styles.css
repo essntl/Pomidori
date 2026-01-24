@@ -407,8 +407,8 @@ input:checked + .slider:before {
   margin-bottom: 1rem;
 }
 
-.ambient-container {
-  width: calc(70% - 1rem);
+.sound-container {
+  width: calc(40% - 1rem);
   background: rgba(248, 180, 217, 0.2);
   padding: 2rem;
   border-radius: 2rem;
@@ -416,26 +416,109 @@ input:checked + .slider:before {
   transition: all 1s ease-in-out;
 }
 
-.ambient-container h1 {
-  font-size: 3rem;
-  margin-bottom: 0rem;
+.sound-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0rem;
   transition: color 0.5s ease-in-out;
 }
 
-body.lit .ambient-container h1 {
+.ambient-toggle-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  background: rgba(123, 73, 100, 0.2);
+  padding: 1rem;
+  border-radius: 1rem;
+
+}
+
+.ambient-toggle-container button {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  background-color: #ecd6c4;
+}
+
+.notes-container {
+  width: calc(40% - 1rem);
+  background: rgba(248, 180, 217, 0.2);
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  transition: all 1s ease-in-out;
+}
+
+.notes-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0rem;
+  transition: color 0.5s ease-in-out;
+}
+
+.notes-display-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.note-input-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#note-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-family: Nunito, sans-serif;
+}
+
+#add-note-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #FF9793;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+body.lit .sound-container h1 {
   color: #ffaa66;
 }
 
-body.dark-mode .ambient-container h1 {
+body.dark-mode .sound-container h1 {
   color: #ffaa66;
 }
 
-body.dark-mode .ambient-container {
+body.lit .notes-container h1 {
+  color: #ffaa66;
+}
+
+body.dark-mode .notes-container h1 {
+  color: #ffaa66;
+}
+
+body.dark-mode .notes-container {
   background: rgba(20, 20, 20, 0.4);
   box-shadow: 0 2px 16px rgba(255, 107, 53, 0.05);
 }
 
-body.lit .ambient-container {
+body.lit .notes-container {
+  background: rgba(20, 20, 20, 0.4);
+  box-shadow: 0 2px 16px rgba(255, 107, 53, 0.05);
+}
+
+body.dark-mode .sound-container {
+  background: rgba(20, 20, 20, 0.4);
+  box-shadow: 0 2px 16px rgba(255, 107, 53, 0.05);
+}
+
+body.lit .sound-container {
   background: rgba(20, 20, 20, 0.4);
   box-shadow: 0 2px 16px rgba(255, 107, 53, 0.05);
 }
