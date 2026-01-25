@@ -74,12 +74,19 @@
       <div class="notes-container">
         <h1>Notes</h1>
         <div class="notes-display-container">
-          <div class="note-input-area">
-            <input type="text" id="note-input" placeholder="Add a task or note">
-            <button id="add-note-btn">Add</button>
-          </div>
+          <button id="add-note-btn">+ Add Note</button>
           <div id="notes-list">
-            
+            <!-- Sample note card for testing UI - remove when implementing JS -->
+            <div class="note-card">
+              <textarea placeholder="Write your note...">This is a sample note for testing the UI</textarea>
+              <button class="delete-btn">×</button>
+            </div>
+            <div class="note-card">
+              <textarea placeholder="Write your note...">Another sample note with some longer text to see how it looks when there's more content in the note area.
+                
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</textarea>
+              <button class="delete-btn">×</button>
+            </div>
           </div>
         </div>
       </div>
