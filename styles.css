@@ -1064,6 +1064,10 @@ body.dark-mode .modal-settings button {
     width: calc(100% - 4rem);
   }
 
+  .notes-container {
+    width: 100%;
+  }
+
   .sound-container {
     flex: 10;
   }
