@@ -1,8 +1,30 @@
-function NoteCard() {
+function NoteCard({ note, isSelected, onClick, onDelete }) {
   return (
-    <div className="flex items-center justify-center ">
-        <textarea name="" id="" placeholder="Write your note here" className="flex-10 border-2 border-transparent rounded-md p-2 dark:text-white"></textarea>
-        <button></button>
+    <div
+      onClick={onClick}
+      className={`p-3 rounded-lg cursor-pointer transition-colors ${
+        isSelected
+          ? "bg-pink-200 dark:bg-pink-600"
+          : "bg-white/70 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700"
+      }`}
+    >
+      <div className="flex items-center justify-between">
+        <h3 className="font-medium dark:text-white truncate flex-1">
+          {note.title || "Untitled"}
+        </h3>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
+          className="ml-2 text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+        >
+          ×
+        </button>
+      </div>
+      <p className="text-sm text-gray-500 dark:text-gray-400 truncate mt-1">
+        {note.content || "No content"}
+      </p>
     </div>
   );
 }
