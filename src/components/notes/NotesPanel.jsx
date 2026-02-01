@@ -56,7 +56,7 @@ function NotesPanel() {
           <h1 className="text-xl font-bold dark:text-white mb-3">Notes</h1>
           <button
             onClick={addNote}
-            className="w-full p-2 bg-pink-200 hover:bg-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 rounded-md transition-colors dark:text-white"
+            className="w-full p-2 bg-pink-200 hover:bg-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 rounded-md transition-colors duration-300 dark:text-white"
           >
             + Add Note
           </button>
