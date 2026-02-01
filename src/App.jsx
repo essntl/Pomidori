@@ -11,7 +11,7 @@ function App() {
     <div className={isDarkMode ? "dark" : ""}>
       <div className="min-h-screen flex flex-col bg-linear-to-t from-[#bcbcbc] to-white dark:from-[#222222] dark:to-black transition-all">
         <Navbar />
-        <main className="flex-1 flex md:flex-row flex-col items-stretch ">
+        <main className="flex-1 flex lg:flex-row flex-col items-stretch ">
           <NotesPanel />
           <PomodoroTimer />
         </main>

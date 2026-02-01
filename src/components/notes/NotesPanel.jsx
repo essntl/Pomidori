@@ -49,8 +49,8 @@ function NotesPanel() {
       {/* Sidebar - Note List */}
       <div
         className={`${
-          selectedNote ? "hidden md:flex" : "flex"
-        } w-full md:w-64 shrink-0 flex-col bg-white/50 dark:bg-gray-800/30 rounded-xl shadow-xl overflow-hidden`}
+          selectedNote ? "hidden md:flex" : "flex min-h-[60vh]"
+        } w-full md:w-64 shrink-0 flex-col bg-white/50 dark:bg-gray-800/30 rounded-xl shadow-xl overflow-hidden md:min-h-[70vh] max-h-[70vh]`}
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <h1 className="text-xl font-bold dark:text-white mb-3">Notes</h1>
@@ -86,7 +86,7 @@ function NotesPanel() {
       {/* Note Viewer/Editor */}
       <div
         className={`${
-          selectedNote ? "flex" : "hidden md:flex"
+          selectedNote ? "flex min-h-[60vh]" : "hidden md:flex"
         } flex-1 flex-col bg-white/50 dark:bg-gray-800/30 rounded-xl shadow-xl overflow-hidden`}
       >
         {selectedNote ? (
