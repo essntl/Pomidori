@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NoteCard from "./NoteCard";
 
 function NotesPanel() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+    const savedNotes = localStorage.getItem("notes");
+    return savedNotes ? JSON.parse(savedNotes) : [];
+  });
   const [selectedNote, setSelectedNote] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   function addNote() {
     const newNote = {
@@ -18,8 +25,8 @@ function NotesPanel() {
   function updateNote(id, field, value) {
     setNotes(
       notes.map((note) =>
-        note.id === id ? { ...note, [field]: value } : note
-      )
+        note.id === id ? { ...note, [field]: value } : note,
+      ),
     );
     if (selectedNote?.id === id) {
       setSelectedNote({ ...selectedNote, [field]: value });
