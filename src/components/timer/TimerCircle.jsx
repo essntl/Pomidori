@@ -1,4 +1,7 @@
+import { useTimerContext } from "../../context/TimerContext";
+
 function TimerCircle() {
+    const { status, currentLoop, totalLoops, timeLeft } = useTimerContext();
     return (
         <>
             <div>
@@ -68,11 +71,11 @@ function TimerCircle() {
                         text-anchor="middle"
                         dominant-baseline="middle"
                     >
-                        <tspan class="hours">00</tspan>
+                        <tspan class="hours">{Math.floor(timeLeft / 3600).toString().padStart(2, '0')}</tspan>
                         :
-                        <tspan class="minutes">25</tspan>
+                        <tspan class="minutes">{Math.floor((timeLeft % 3600) / 60).toString().padStart(2, '0')}</tspan>
                         :
-                        <tspan class="seconds">00</tspan>
+                        <tspan class="seconds">{(timeLeft % 60).toString().padStart(2, '0')}</tspan>
                     </text>
                     <text
                         x="150"
@@ -80,9 +83,9 @@ function TimerCircle() {
                         text-anchor="middle"
                         dominant-baseline="middle"
                     >
-                        <tspan class="timer-status">Idle</tspan>
+                        <tspan class="timer-status">{status} </tspan>
                         -
-                        <tspan class="loop-count">Loop 1/2</tspan>
+                        <tspan class="loop-count"> Loop {currentLoop}/{totalLoops}</tspan>
                     </text>
                 </svg>
             </div>
