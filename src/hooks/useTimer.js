@@ -7,7 +7,7 @@ export function useTimer() {
   const [workMode, setWorkMode] = useState(true);
 
   // Timer settings
-  const [workDuration, setWorkDuration] = useState(1);
+  const [workDuration, setWorkDuration] = useState(25);
   const [breakDuration, setBreakDuration] = useState(2);
   const [totalLoops, setTotalLoops] = useState(2);
 
@@ -16,7 +16,6 @@ export function useTimer() {
   const [currentLoop, setCurrentLoop] = useState(1);
 
   const intervalRef = useRef(null);
-  
 
   useEffect(() => {
     if (!isRunning || isPaused) {
@@ -37,14 +36,12 @@ export function useTimer() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [
-    isRunning,
-    isPaused,
-  ]);
+  }, [isRunning, isPaused]);
 
   useEffect(() => {
-    if(timeLeft !== 0 || !isRunning || isPaused) return; {
-      if(workMode) {
+    if (timeLeft !== 0 || !isRunning || isPaused) return;
+    {
+      if (workMode) {
         setWorkMode(false);
         setTimeLeft(breakDuration * 60);
       } else {
@@ -60,7 +57,16 @@ export function useTimer() {
         }
       }
     }
-  }, [timeLeft, isRunning, isPaused, workMode, currentLoop, totalLoops, breakDuration, workDuration]);
+  }, [
+    timeLeft,
+    isRunning,
+    isPaused,
+    workMode,
+    currentLoop,
+    totalLoops,
+    breakDuration,
+    workDuration,
+  ]);
 
   const start = () => {
     setIsRunning(true);
@@ -71,12 +77,19 @@ export function useTimer() {
     setIsPaused(true);
   };
 
-  const reset = () => {
+  const reset = (newWorkDuration, newBreakDuration, newTotalLoops) => {
+    const workTime =
+      newWorkDuration !== undefined ? newWorkDuration : workDuration;
+
     setIsRunning(false);
     setIsPaused(false);
     setWorkMode(true);
     setCurrentLoop(1);
-    setTimeLeft(workDuration * 60);
+    setTimeLeft(workTime * 60);
+
+    if (newWorkDuration !== undefined) setWorkDuration(newWorkDuration);
+    if (newBreakDuration !== undefined) setBreakDuration(newBreakDuration);
+    if (newTotalLoops !== undefined) setTotalLoops(newTotalLoops);
   };
 
   const status = isPaused

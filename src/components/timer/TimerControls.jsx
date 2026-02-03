@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { useTimerContext } from "../../context/TimerContext";
+import TimerSettings from "./TimerSettings";
 
 function TimerControls() {
   const { start, pause, reset, isRunning, isPaused } = useTimerContext();
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const handleStartPause = () => {
     if (isRunning && !isPaused) {
@@ -26,10 +29,17 @@ function TimerControls() {
         >
           {isRunning && !isPaused ? "Pause" : "Start"}
         </button>
-        <button className="rounded-md transition-colors duration-300 bg-pink-200 hover:bg-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 px-4 py-2 dark:text-white min-w-25">
+        <button
+          className="rounded-md transition-colors duration-300 bg-pink-200 hover:bg-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 px-4 py-2 dark:text-white min-w-25"
+          onClick={() => setIsSettingsOpen(true)}
+        >
           Settings
         </button>
       </div>
+      <TimerSettings
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+      />
     </>
   );
 }
