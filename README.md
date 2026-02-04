@@ -24,9 +24,7 @@ I started this project because I'm tired of being locked into ecosystems and for
 This started as a small project for a JavaScript course on Codedex and evolved into what it is now.
 
 ## Installation
-1. Clone the repo: `git clone https://github.com/essntl/pomidori.git`
-2. Open `index.html` in your browser
-3. That's it!
+ill edit this later when i actually get a working version going 😭
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
