@@ -4,14 +4,15 @@ Pomidori is a passion project to create a platform for productivity tools like P
 
 ## Features
 - ⏱️ Pomodoro Timer with customizable work/break durations and cycle counts
-- 🌙 Dark mode support with persistent preferences
+- 🌙 Dark mode support
 - 🔥 Visual "lit" state during work sessions
-- 📝 Notes (coming soon)
+- 📝 Notes
 - ✅ To-do lists (coming soon)
 - 📅 Calendar (coming soon)
+- Customizable styles (coming soon)
 
 ## Stack
-Built with React (Vite) with TailwindCSS
+Built with Next.JS and TailwindCSS 
 
 ## Philosophy
 Open-source, user-experience first, free forever.
