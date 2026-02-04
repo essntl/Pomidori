@@ -18,7 +18,7 @@ export default function Home() {
         <p className="text-lg text-gray-600 dark:text-gray-300">
           Welcome to Pomidori, the ultimate Pomodoro timer.
           <br />
-          Optimize your work with our timer, task calendar, and notes section all
+          Optimize your work with a timer, task calendar, and notes section all
           in one place.
         </p>
         <Link
@@ -40,7 +40,7 @@ export default function Home() {
           />
           <h2 className="text-xl font-bold dark:text-white">Pomodoro Timer</h2>
           <p className="text-gray-600 dark:text-gray-300">
-            Stay focused with our customizable Pomodoro timer. Set your work and
+            Stay focused with a customizable Pomodoro timer. Set your work and
             break intervals to suit your productivity style.
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function Home() {
           />
           <h2 className="text-xl font-bold dark:text-white">Task Calendar</h2>
           <p className="text-gray-600 dark:text-gray-300">
-            Organize your tasks and deadlines with our integrated calendar. Plan
+            Organize your tasks and deadlines with an integrated calendar. Plan
             your work sessions around your schedule.
           </p>
         </div>
@@ -68,8 +68,7 @@ export default function Home() {
           />
           <h2 className="text-xl font-bold dark:text-white">Notes Section</h2>
           <p className="text-gray-600 dark:text-gray-300">
-            Write down important points, ideas, or reflections during your work
-            sessions with our built-in notes feature.
+            Write down important points, ideas, or reflections in a dedicated notes and to-do list section.
           </p>
         </div>
       </section>
