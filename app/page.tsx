@@ -1,65 +1,112 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="flex flex-col gap-16 py-12 px-4">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center text-center gap-6 max-w-2xl mx-auto">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+          src="/images/logo.png"
+          alt="Pomidori logo"
+          width={186}
+          height={186}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <h1 className="text-4xl md:text-5xl font-bold dark:text-white">
+          The only Pomodoro site you'll ever need
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-300">
+          Welcome to Pomidori, the ultimate Pomodoro timer.
+          <br />
+          Optimize your work with our timer, task calendar, and notes section all
+          in one place.
+        </p>
+        <Link
+          href="/app"
+          className="px-8 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg transition-colors duration-300 shadow-lg"
+        >
+          Get started
+        </Link>
+      </section>
+
+      {/* Feature Cards */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="flex flex-col items-center text-center gap-4 p-6 bg-white/50 dark:bg-gray-800/30 rounded-xl shadow-lg">
+          <Image
+            src="/images/logo.png"
+            alt="timer icon"
+            width={96}
+            height={96}
+          />
+          <h2 className="text-xl font-bold dark:text-white">Pomodoro Timer</h2>
+          <p className="text-gray-600 dark:text-gray-300">
+            Stay focused with our customizable Pomodoro timer. Set your work and
+            break intervals to suit your productivity style.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <div className="flex flex-col items-center text-center gap-4 p-6 bg-white/50 dark:bg-gray-800/30 rounded-xl shadow-lg">
+          <Image
+            src="/images/calendar.png"
+            alt="calendar icon"
+            width={96}
+            height={96}
+          />
+          <h2 className="text-xl font-bold dark:text-white">Task Calendar</h2>
+          <p className="text-gray-600 dark:text-gray-300">
+            Organize your tasks and deadlines with our integrated calendar. Plan
+            your work sessions around your schedule.
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center text-center gap-4 p-6 bg-white/50 dark:bg-gray-800/30 rounded-xl shadow-lg">
+          <Image
+            src="/images/list.png"
+            alt="notes icon"
+            width={96}
+            height={96}
+          />
+          <h2 className="text-xl font-bold dark:text-white">Notes Section</h2>
+          <p className="text-gray-600 dark:text-gray-300">
+            Write down important points, ideas, or reflections during your work
+            sessions with our built-in notes feature.
+          </p>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="flex flex-col md:flex-row items-center gap-8 max-w-5xl mx-auto bg-white/50 dark:bg-gray-800/30 p-8 rounded-xl shadow-lg">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold dark:text-white">About Pomidori</h2>
+          <p className="text-gray-600 dark:text-gray-300">
+            Pomidori was made as a project for <strong>Codedex</strong> and as a
+            tool I plan to use myself. This is a passion project, built with care
+            and dedication to productivity.
+          </p>
+          <p className="text-gray-600 dark:text-gray-300">
+            You can view the source code and follow the project's progress on my
+            GitHub by pressing the button below!
+          </p>
+          <p className="text-gray-600 dark:text-gray-300 font-medium">
+            Made by essential
+          </p>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://github.com/essntl/pomidori"
             target="_blank"
             rel="noopener noreferrer"
+            className="inline-block w-fit mt-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            View on GitHub
           </a>
         </div>
-      </main>
+        <Image
+          src="/images/logo.png"
+          alt="about illustration"
+          width={400}
+          height={400}
+          className="flex-shrink-0"
+        />
+      </section>
     </div>
   );
 }
