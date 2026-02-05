@@ -1,4 +1,13 @@
-function NoteCard({ note, isSelected, onClick, onDelete }) {
+import { Note } from "./NotesPanel";
+
+interface NoteCardProps {
+  note: Note;
+  isSelected: boolean;
+  onClick: () => void;
+  onDelete: () => void;
+}
+
+function NoteCard({ note, isSelected, onClick, onDelete }: NoteCardProps) {
   return (
     <div
       onClick={onClick}

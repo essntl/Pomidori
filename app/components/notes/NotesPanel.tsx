@@ -1,12 +1,20 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import NoteCard from "./NoteCard";
 
+export interface Note {
+  id: number;
+  title: string;
+  content: string;
+}
+
 function NotesPanel() {
-  const [notes, setNotes] = useState(() => {
+  const [notes, setNotes] = useState<Note[]>(() => {
     const savedNotes = localStorage.getItem("notes");
     return savedNotes ? JSON.parse(savedNotes) : [];
   });
-  const [selectedNote, setSelectedNote] = useState(null);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
 
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
@@ -22,7 +30,7 @@ function NotesPanel() {
     setSelectedNote(newNote);
   }
 
-  function updateNote(id, field, value) {
+  function updateNote(id: number, field: string, value: string) {
     setNotes(
       notes.map((note) =>
         note.id === id ? { ...note, [field]: value } : note,
@@ -33,7 +41,7 @@ function NotesPanel() {
     }
   }
 
-  function deleteNote(id) {
+  function deleteNote(id: number) {
     setNotes(notes.filter((note) => note.id !== id));
     if (selectedNote?.id === id) {
       setSelectedNote(null);
