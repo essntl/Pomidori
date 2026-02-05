@@ -23,8 +23,25 @@ I started this project because I'm tired of being locked into ecosystems and for
 ## History
 This started as a small project for a JavaScript course on Codedex and evolved into what it is now.
 
-## Installation
-ill edit this later when i actually get a working version going 😭
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ installed
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/essntl/pomidori.git
+   cd pomidori
+2. Install dependencies
+   ```bash
+   npm install
+
+3. Run the development server
+    ```bash
+   npm run dev
+4. Open http://localhost:3000 in your browser
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
