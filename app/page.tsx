@@ -103,7 +103,7 @@ export default function Home() {
           alt="about illustration"
           width={400}
           height={400}
-          className="flex-shrink-0"
+          className="shrink-0"
         />
       </section>
     </div>

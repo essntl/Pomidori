@@ -25,7 +25,7 @@ export default function RootLayout({
         <Providers>
           <div className="min-h-screen flex flex-col bg-linear-to-t from-[#bcbcbc] to-white dark:from-[#222222] dark:to-black transition-all">
             <Navbar />
-            <main className="flex-1 flex lg:flex-row flex-col items-stretch justify-center">
+            <main className="flex-1 flex lg:flex-row justify-center flex-col">
               {children}
             </main>
             <Footer />
