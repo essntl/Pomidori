@@ -2,7 +2,6 @@
 
 import Overlay from "./Overlay";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 function Navbar() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
@@ -41,12 +40,10 @@ function Navbar() {
           />
         </button>
       </div>
-      <AnimatePresence>
         <Overlay
           isOpen={isOverlayOpen}
           onClose={() => setIsOverlayOpen(false)}
         />
-      </AnimatePresence>
     </div>
   );
 }
