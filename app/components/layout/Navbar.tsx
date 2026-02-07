@@ -2,19 +2,21 @@
 
 import Overlay from "./Overlay";
 import { useState } from "react";
+import Link from "next/link";
+
 
 function Navbar() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   return (
     <div className="flex justify-between items-center m-4 flex-row">
-      <div className="relative flex flex-row items-center gap-2 cursor-pointer p-2 rounded-xl bg-white/50 dark:bg-gray-800/30 shadow-xl ">
+      <Link href="/" className="relative flex flex-row items-center gap-2 cursor-pointer p-2 rounded-xl bg-white/50 dark:bg-gray-800/30 shadow-xl ">
         <img src="/images/logo.png" alt="logo" width="48" className="block" />
-        <h1 className="text-3xl font-bold text-purple-950/80 mt-1 dark:text-purple-200 transition-colors duration-300">
+        <h1 className="text-3xl font-bold text-purple-950/80 mt-1 dark:text-purple-200 transition-colors duration-300 hidden md:block">
           Pomidori
         </h1>
-      </div>
-      <div className="flex items-center gap-4 md:gap-8 p-2 text-white rounded-xl bg-white/50 dark:bg-gray-800/30 shadow-xl">
+      </Link>
+      <div className="flex items-center gap-4 md:gap-8 p-2 md:mr-35 text-black dark:text-white rounded-xl bg-white/50 dark:bg-gray-800/30 shadow-xl">
         <h1>Island</h1>
       </div>
       <div className="flex items-center gap-4 md:gap-8 p-2 rounded-xl bg-white/50 dark:bg-gray-800/30 shadow-xl">

@@ -10,8 +10,8 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Pomodoro Timer",
-  description: "A beautiful pomodoro timer app",
+  title: "Pomidori",
+  description: "Productivity suite to suit all your needs.",
 };
 
 export default function RootLayout({

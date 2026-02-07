@@ -102,7 +102,7 @@ function Overlay({ isOpen, onClose }: OverlayProps) {
                       <Link
                         href={item.href}
                         onClick={onClose}
-                        className="block rounded-2xl px-4 py-3 text-sm font-medium bg-white/10 dark:bg-white/10 text-black/80 dark:text-white/80 hover:bg-white/40 dark:hover:bg-white/20 transition-colors text-left backdrop-blur-sm"
+                        className="block rounded-2xl px-4 py-3 text-sm font-medium bg-white/20 dark:bg-white/10 text-black/80 dark:text-white/80 hover:bg-white/40 dark:hover:bg-white/20 transition-colors text-left backdrop-blur-sm"
                       >
                         {item.label}
                       </Link>
@@ -115,7 +115,7 @@ function Overlay({ isOpen, onClose }: OverlayProps) {
                   {/* Music widget placeholder */}
                   <motion.section
                     variants={itemVariants}
-                    className="rounded-3xl bg-white/10 dark:bg-white/10 backdrop-blur-sm p-4 min-h-30 flex flex-col justify-between"
+                    className="rounded-3xl bg-white/20 dark:bg-white/10 backdrop-blur-sm p-4 min-h-30 flex flex-col justify-between"
                     aria-label="Music widget"
                   >
                     <span className="text-xs font-semibold uppercase tracking-wider text-black/40 dark:text-white/40">
@@ -140,7 +140,7 @@ function Overlay({ isOpen, onClose }: OverlayProps) {
                     className="grid grid-cols-4 gap-3"
                     aria-label="Quick toggles"
                   >
-                    <motion.div variants={itemVariants} className="rounded-2xl bg-white/10 dark:bg-white/10 backdrop-blur-sm p-3 flex items-center justify-center aspect-square">
+                    <motion.div variants={itemVariants} className="rounded-2x backdrop-blur-sm flex items-center justify-center aspect-square">
                       <DarkModeToggle />
                     </motion.div>
                     <motion.div variants={itemVariants}>
@@ -167,7 +167,7 @@ function Overlay({ isOpen, onClose }: OverlayProps) {
 function TogglePlaceholder({ label }: { label: string }) {
   return (
     <button
-      className="w-full h-full rounded-2xl bg-white/10 dark:bg-white/10 backdrop-blur-sm p-3 flex flex-col items-center justify-center aspect-square text-black/50 dark:text-white/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors"
+      className="w-full h-full rounded-2xl bg-white/20 dark:bg-white/10 backdrop-blur-sm p-3 flex flex-col items-center justify-center aspect-square text-black/50 dark:text-white/50 hover:bg-white/30 dark:hover:bg-white/20 transition-colors"
       aria-label={label}
     >
       <span className="text-xs font-medium">{label}</span>

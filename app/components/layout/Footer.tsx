@@ -19,22 +19,7 @@ function Footer() {
       </div>
       <div className="flex items-center pl-4 gap-4 pr-8">
         <ul className="flex gap-4 text-lg dark:text-gray-200">
-          <li>
-            <Link
-              className="inline-block hover:scale-110 duration-300 transition-all"
-              href="/"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="inline-block hover:scale-110 duration-300 transition-all"
-              href="/app"
-            >
-              App
-            </Link>
-          </li>
+
         </ul>
       </div>
     </div>
