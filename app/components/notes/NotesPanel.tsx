@@ -12,17 +12,21 @@ export interface Note {
 function NotesPanel() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const savedNotes = localStorage.getItem("notes");
-    if (savedNotes) {
-      setNotes(JSON.parse(savedNotes));
+    const saved = localStorage.getItem("notes");
+    if (saved) {
+      setNotes(JSON.parse(saved));
     }
+    setIsLoaded(true);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+    if (isLoaded) {
+      localStorage.setItem("notes", JSON.stringify(notes));
+    }
+  }, [notes, isLoaded]);
 
   function addNote() {
     const newNote = {
