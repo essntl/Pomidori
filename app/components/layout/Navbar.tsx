@@ -3,6 +3,7 @@
 import Overlay from "./Overlay";
 import { useState } from "react";
 import Link from "next/link";
+import Island from "./Island";
 
 
 function Navbar() {
@@ -16,9 +17,7 @@ function Navbar() {
           Pomidori
         </h1>
       </Link>
-      <div className="flex items-center gap-4 md:gap-8 p-2 md:mr-35 text-black dark:text-white rounded-xl bg-white/50 dark:bg-gray-800/30 shadow-xl">
-        <h1>Island</h1>
-      </div>
+      <Island />
       <div className="flex items-center gap-4 md:gap-8 p-2 rounded-xl bg-white/50 dark:bg-gray-800/30 shadow-xl">
         <button
           onClick={() => setIsOverlayOpen(!isOverlayOpen)}

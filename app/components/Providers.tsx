@@ -1,13 +1,13 @@
 "use client";
 
 import { ThemeProvider, useTheme } from "../context/ThemeContext";
+import { TimerProvider } from "../context/TimerContext";
 import { ReactNode } from "react";
 
 type ProvidersProps = {
   children: ReactNode;
 };
 
-// Inner component that applies the dark class
 function ThemeWrapper({ children }: { children: ReactNode }) {
   const { isDarkMode } = useTheme();
   
@@ -20,8 +20,12 @@ function ThemeWrapper({ children }: { children: ReactNode }) {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <ThemeProvider>
-      <ThemeWrapper>{children}</ThemeWrapper>
-    </ThemeProvider>
+    <TimerProvider>
+      <ThemeProvider>
+        <ThemeWrapper>
+          {children}
+        </ThemeWrapper>
+      </ThemeProvider>
+    </TimerProvider>
   );
 }
